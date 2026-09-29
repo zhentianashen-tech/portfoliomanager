@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sequence desk · Portfolio mock-up</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="identity">
+      <span>Local editing desk</span>
+      <h1 id="project-title">Portfolio mock-up</h1>
+    </div>
+    <div class="header-status" aria-live="polite">
+      <strong id="change-count">Loading…</strong>
+      <span id="save-status">No saved trace yet</span>
+    </div>
+    <div class="header-actions">
+      <button id="undo" type="button" disabled>Undo</button>
+      <button id="redo" type="button" disabled>Redo</button>
+      <div class="restore-control">
+        <label class="sr-only" for="restore-version">Version to restore</label>
+        <select id="restore-version" aria-label="Version to restore">
+          <option value="published">Published baseline</option>
+        </select>
+        <button id="reset" class="quiet-danger" type="button" disabled>Restore</button>
+      </div>
+      <button id="save" class="primary" type="button">Save version</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="sequence-panel" aria-labelledby="sequence-title">
+      <div class="sequence-toolbar">
+        <div>
+          <p class="eyebrow">One sequence, two readings</p>
+          <h2 id="sequence-title">Edit the sequence</h2>
+          <p class="instructions">Everything here is editable. Drag or click two slots to swap photos, or drag a library photo directly onto any slot to replace it. Use Remove on a placed photo to leave its slot empty. The library labels whether a photo is used in the Book, Exhibition, both, or neither. Save Version makes this the draft shown next time.</p>
+        </div>
+        <div class="toolbar-actions">
+          <div class="view-toggle" role="group" aria-label="Draft view">
+            <button class="view-option active" type="button" data-view="exhibition" aria-pressed="true">Exhibition blocks</button>
+            <button class="view-option" type="button" data-view="book" aria-pressed="false">Book spreads</button>
+          </div>
+          <div class="toolbar-button-row">
+            <button id="add-block" class="add-block" type="button">Add block</button>
+            <button id="catalog-toggle" class="catalog-toggle" type="button" aria-controls="catalog-panel" aria-expanded="true">Hide catalog</button>
+          </div>
+        </div>
+      </div>
+      <div id="selection-bar" class="selection-bar" hidden>
+        <span id="selection-copy"></span>
+        <div class="selection-actions">
+          <button id="empty-slot" class="empty-action" type="button">Return photo to Unused</button>
+          <button id="clear-selection" type="button">Cancel selection</button>
+        </div>
+      </div>
+      <div id="sequence" class="sequence" aria-live="polite"></div>
+    </section>
+
+    <aside id="catalog-panel" class="catalog-panel" aria-labelledby="catalog-title">
+      <div class="catalog-heading">
+        <div>
+          <p class="eyebrow">Complete local catalog</p>
+          <h2 id="catalog-title">Photo library</h2>
+        </div>
+        <span id="catalog-count"></span>
+      </div>
+
+      <label class="search-field">
+        <span>Search captions, filenames, or folders</span>
+        <input id="catalog-search" type="search" placeholder="Search photos…" autocomplete="off">
+      </label>
+      <div class="filter-section">
+        <span>Use across drafts</span>
+        <div class="filter-row" role="group" aria-label="Draft usage filters" data-filter-group="usage">
+          <button class="filter active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" type="button" data-filter="unused-book" aria-pressed="false">Unused in Book</button>
+          <button class="filter" type="button" data-filter="unused-exhibition" aria-pressed="false">Unused in Exhibition</button>
+          <button class="filter" type="button" data-filter="unused-both" aria-pressed="false">Unused in both</button>
+          <button class="filter" type="button" data-filter="book-only" aria-pressed="false">Book only</button>
+          <button class="filter" type="button" data-filter="exhibition-only" aria-pressed="false">Exhibition only</button>
+          <button class="filter" type="button" data-filter="both" aria-pressed="false">Both drafts</button>
+        </div>
+        <span>Catalog status</span>
+        <div class="filter-row" role="group" aria-label="Catalog status filters" data-filter-group="selection">
+          <button class="filter active" type="button" data-filter="all" aria-pressed="true">All statuses</button>
+          <button class="filter" type="button" data-filter="keep" aria-pressed="false">Keep</button>
+          <button class="filter" type="button" data-filter="reserve" aria-pressed="false">Reserve</button>
+        </div>
+      </div>
+      <p class="catalog-help" id="catalog-help">Select a sequence position before choosing a replacement.</p>
+      <div id="catalog" class="catalog"></div>
+
+      <section class="handoff" aria-labelledby="handoff-title">
+        <p class="eyebrow">Agent handoff</p>
+        <h2 id="handoff-title">Save a readable trace</h2>
+        <label>
+          <span>Session name</span>
+          <input id="session-name" type="text" maxlength="80" placeholder="e.g. First exhibition revision">
+        </label>
+        <label>
+          <span>Notes for the next editor</span>
+          <textarea id="session-note" rows="4" maxlength="1200" placeholder="What were you trying to change or preserve?"></textarea>
+        </label>
+        <div class="recent-actions">
+          <strong>Recent actions</strong>
+          <ol id="action-log"><li>No edits yet.</li></ol>
+        </div>
+        <div class="version-history">
+          <strong>Version history</strong>
+          <ol id="version-list"><li class="version-empty">Loading saved versions…</li></ol>
+        </div>
+        <p class="handoff-note">Save Version keeps the complete editable draft as the latest version and writes JSON and Markdown history into <code>analysis/sequence_edits/</code>. Loading an older version is reversible until you save it.</p>
+      </section>
+    </aside>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+.DS_Store
+**/.DS_Store
+**/__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+!.env.example
+
+# Never publish photographic binaries by default.
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+*.tif
+*.tiff
+*.dng
+*.arw
+*.heic
+
+# Local working data and edit history may contain private filenames and text.
+analysis/*
+!analysis/.gitignore
+!analysis/README.md
+photos/originals/*
+!photos/originals/README.md
+photos/web/*
+!photos/web/README.md
+
+# Credentials and certificates.
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer

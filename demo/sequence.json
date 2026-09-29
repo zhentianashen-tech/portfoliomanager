@@ -1,0 +1,39 @@
+{
+  "title": "Portfolio mock-up",
+  "subtitle": "Generic demonstration content",
+  "status": "demo",
+  "photographs": 10,
+  "role_schema": [
+    {"key":"anchor","label":"Anchor","purpose":"Starts the visual relationship"},
+    {"key":"echo-1","label":"Echo I","purpose":"Repeats or transforms the anchor"},
+    {"key":"echo-2","label":"Echo II","purpose":"Extends the relationship"},
+    {"key":"bridge","label":"Bridge","purpose":"Moves toward the next block"},
+    {"key":"pause","label":"Pause","purpose":"Breaks the expected rhythm"}
+  ],
+  "movements": [
+    {
+      "id": "mock-block-01",
+      "title": "Mock block 01",
+      "note": "This is placeholder editorial text for demonstrating an editable exhibition block.",
+      "members": [
+        "mock-set-a/photo-01.jpg",
+        "mock-set-a/photo-02.jpg",
+        "mock-set-a/photo-03.jpg",
+        "mock-set-a/photo-04.jpg",
+        "mock-set-a/photo-05.jpg"
+      ]
+    },
+    {
+      "id": "mock-block-02",
+      "title": "Mock block 02",
+      "note": "Replace this mock-up comment when working with a real project.",
+      "members": [
+        "mock-set-b/photo-06.jpg",
+        "mock-set-b/photo-07.jpg",
+        "mock-set-b/photo-08.jpg",
+        "mock-set-b/photo-09.jpg",
+        "mock-set-b/photo-10.jpg"
+      ]
+    }
+  ]
+}

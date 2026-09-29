@@ -1,0 +1,10 @@
+*.csv -text
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.gif binary
+*.tif binary
+*.tiff binary
+*.dng binary
+*.arw binary

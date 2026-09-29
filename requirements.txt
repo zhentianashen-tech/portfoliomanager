@@ -1,0 +1,7 @@
+# Local photo analysis and static-site build dependencies.
+# The sequence editor itself uses only the Python standard library.
+numpy==2.5.3
+Pillow==12.3.0
+requests==2.34.2
+scikit-learn==1.9.1
+scipy==1.18.1

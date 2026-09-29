@@ -1,0 +1,4 @@
+originals/*
+!originals/README.md
+web/*
+!web/README.md
